@@ -7,23 +7,45 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="w-full flex flex-col items-center px-6 py-10 bg-gray-100 min-h-screen">
-      <h1 className="text-3xl font-bold text-[#3b3b3b] mb-10 tracking-wide">
+    <main
+      className="w-full flex flex-col items-center px-6 py-10 min-h-screen"
+      style={{
+        backgroundColor: "var(--bg)",
+        color: "var(--text)",
+      }}
+    >
+      <h1
+        className="text-3xl font-bold mb-10 tracking-wide"
+        style={{ color: "var(--text-soft)" }}
+      >
         Home
       </h1>
 
-      <section className="w-full max-w-3xl">
-        <div className="bg-white shadow-md border border-gray-200 rounded-lg p-6 space-y-6">
+      <section className=" card-dynamic border w-full max-w-3xl">
+        <div
+          className="shadow-md rounded-lg p-6 space-y-6"
+          style={{
+            backgroundColor: "var(--bg-card)",
+            border: `1px solid var(--border)`,
+            color: "var(--text)",
+          }}
+        >
           <img
             src={imagem}
             alt="escritorio"
-            className="w-full h-64 object-cover rounded-md border border-gray-300"
+            className="w-full h-64 object-cover rounded-md"
+            style={{ border: `1px solid var(--border)` }}
           />
 
-          <h2 className="text-2xl font-semibold text-[#3b3b3b]">Bem-Vindo</h2>
+          <h2
+            className="text-2xl font-semibold"
+            style={{ color: "var(--text-soft)" }}
+          >
+            Bem-Vindo
+          </h2>
 
           <div className="space-y-4">
-            <p className="text-gray-700 leading-relaxed">
+            <p className="leading-relaxed" style={{ color: "var(--text)" }}>
               Neste ambiente, reforçamos o valor do trabalho bem-executado, da
               disciplina e do compromisso com as entregas. Aqui, cada
               colaborador encontra motivação para manter a produtividade em
@@ -31,7 +53,7 @@ export default function Home() {
               excelência no mundo corporativo.
             </p>
 
-            <p className="text-gray-700 leading-relaxed">
+            <p className="leading-relaxed" style={{ color: "var(--text)" }}>
               Nosso objetivo é promover uma cultura onde o esforço diário é
               reconhecido, a constância é valorizada e o profissional se sente
               estimulado a cumprir suas metas com clareza, foco e
@@ -45,3 +67,4 @@ export default function Home() {
     </main>
   );
 }
+
