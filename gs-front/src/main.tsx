@@ -7,6 +7,7 @@ import Contato from "./routes/Contato";
 import Integrantes from "./routes/Integrantes";
 import Faq from "./routes/Faq";
 import Sobre from "./routes/Sobre";
+import "./globals.css";
 import Home from "./routes/Home";
 
 const router = createBrowserRouter([
