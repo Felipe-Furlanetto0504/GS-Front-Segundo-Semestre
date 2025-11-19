@@ -20,14 +20,14 @@ export default function Faq() {
             border: "1px solid var(--border)",
           }}
         >
-          <h2 className="text-xl font-semibold">Como funciona?</h2>
+          <h2 className=" text-xl font-semibold">Como funciona?</h2>
           <p style={{ color: "var(--text-light)" }}>
             Esse site te ajuda a ficar mais inspirado no trabalho.
           </p>
         </div>
 
         <div
-          className="shadow-md rounded-lg p-6 space-y-2"
+          className="  shadow-md rounded-lg p-6 space-y-2"
           style={{
             backgroundColor: "var(--card-bg)",
             border: "1px solid var(--border)",
