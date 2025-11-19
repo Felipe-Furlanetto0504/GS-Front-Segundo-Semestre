@@ -4,13 +4,9 @@ import Rodape from "./components/Rodape/Rodape";
 
 export default function App() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col flex-1">
       <Cabecalho />
-
-      <main className="flex-1">
         <Outlet />
-      </main>
-
       <Rodape />
     </div>
   );
