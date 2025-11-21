@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import type { Equipe } from "../../types/equipe";
-import type { Funcionario } from "../../types/funcionario";
 
 export default function Equipe() {
   useEffect(() => {
