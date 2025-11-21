@@ -24,35 +24,99 @@ export default function Equipe() {
   }, []);
 
   const handleEntra = async (id: number) => {
+    const equipeAtual = localStorage.getItem("equipeAtual");
+
+    if (equipeAtual) {
+      alert("Você já participa de uma equipe. Não é permitido ingressar em outra.");
+      return;
+    }
+
     const confirmEntrar = window.confirm("Deseja entrar na Equipe?");
     if (!confirmEntrar) return;
 
     try {
-      const response = await fetch(`http://localhost:8080/equipe/${id}`, {
-        method: "POST",
+      const response = await fetch(`http://localhost:8080/equipe/entrar/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
 
       if (!response.ok) throw new Error("Erro ao entrar na equipe");
 
-      setEquipe((prev) => prev.filter((item) => item.id_equipe !== id));
+      localStorage.setItem("equipeAtual", String(id));
+
       alert("Entrada efetuada com sucesso.");
+      fetchEquipe();
     } catch (error) {
       console.error("Erro:", error);
       alert("Erro ao entrar na equipe.");
     }
   };
 
+  
+  const handleSair = async () => {
+    const equipeAtual = localStorage.getItem("equipeAtual");
+
+    if (!equipeAtual) {
+      alert("Você não está em nenhuma equipe.");
+      return;
+    }
+
+    const confirmSair = window.confirm("Deseja sair da equipe atual?");
+    if (!confirmSair) return;
+
+    try {
+      const response = await fetch(
+        `http://localhost:8080/equipe/sair/${equipeAtual}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (!response.ok) throw new Error("Erro ao sair da equipe");
+
+      localStorage.removeItem("equipeAtual");
+
+      alert("Você saiu da equipe.");
+      fetchEquipe();
+    } catch (error) {
+      console.error("Erro:", error);
+      alert("Erro ao sair da equipe.");
+    }
+  };
+
+  const equipeAtual = localStorage.getItem("equipeAtual");
+
   return (
     <main
       className="min-h-screen py-8 sm:py-10 px-4 sm:px-6"
       style={{ backgroundColor: "var(--bg)", color: "var(--text)" }}
     >
-      <h1
-        className="text-3xl sm:text-4xl font-semibold mb-6 sm:mb-8 pb-2"
-        style={{ color: "var(--text)", borderColor: "var(--header-border)" }}
-      >
-        Equipe
-      </h1>
+      <div className="flex items-center justify-between mb-6 sm:mb-8">
+        <h1
+          className="text-3xl sm:text-4xl font-semibold pb-2"
+          style={{ color: "var(--text)", borderColor: "var(--header-border)" }}
+        >
+          Equipe
+        </h1>
+
+        {equipeAtual && (
+          <button
+            onClick={handleSair}
+            className="py-2 px-4 rounded-lg shadow-md transition hover:text-[#d6d6d6]"
+            style={{
+              backgroundColor: "var(--header-border)",
+              color: "var(--header-text)",
+            }}
+          >
+            Sair da Equipe
+          </button>
+        )}
+      </div>
 
       <section className="flex justify-center">
         <div
@@ -71,81 +135,63 @@ export default function Equipe() {
                   color: "var(--header-text)",
                 }}
               >
-                <th
-                  className="py-2 sm:py-3 px-3 sm:px-4 text-left border-b text-sm sm:text-base"
-                  style={{ borderColor: "var(--header-bg)" }}
-                >
+                <th className="py-2 sm:py-3 px-3 sm:px-4 text-left border-b text-sm sm:text-base">
                   ID
                 </th>
-                <th
-                  className="py-2 sm:py-3 px-3 sm:px-4 text-left border-b text-sm sm:text-base"
-                  style={{ borderColor: "var(--header-bg)" }}
-                >
+                <th className="py-2 sm:py-3 px-3 sm:px-4 text-left border-b text-sm sm:text-base">
                   Nome da Equipe
                 </th>
-                <th
-                  className="py-2 sm:py-3 px-3 sm:px-4 text-left border-b text-sm sm:text-base"
-                  style={{ borderColor: "var(--header-bg)" }}
-                >
-                  Descrição da Equipe
+                <th className="py-2 sm:py-3 px-3 sm:px-4 text-left border-b text-sm sm:text-base">
+                  Descrição
                 </th>
-                <th
-                  className="py-2 sm:py-3 px-3 sm:px-4 text-center border-b text-sm sm:text-base"
-                  style={{ borderColor: "var(--header-bg)" }}
-                >
+                <th className="py-2 sm:py-3 px-3 sm:px-4 text-center border-b text-sm sm:text-base">
                   Ações
                 </th>
               </tr>
             </thead>
 
             <tbody>
-              {equipe.map((e) => (
-                <tr
-                  key={e.id_equipe}
-                  className="transition-colors text-sm sm:text-base"
-                  style={{
-                    backgroundColor: "var(--bg)",
-                    color: "var(--text)",
-                  }}
-                  onMouseEnter={(ev) =>
-                    (ev.currentTarget.style.backgroundColor =
-                      "var(--header-border)")
-                  }
-                  onMouseLeave={(ev) =>
-                    (ev.currentTarget.style.backgroundColor = "var(--bg)")
-                  }
-                >
-                  <td
-                    className="py-2 sm:py-3 px-3 sm:px-4 border-b"
-                    style={{ borderColor: "var(--header-border)" }}
+              {equipe.map((e) => {
+                const desabilitar = !!equipeAtual;
+
+                return (
+                  <tr
+                    key={e.id_equipe}
+                    className="transition-colors text-sm sm:text-base"
+                    style={{
+                      backgroundColor: "var(--bg)",
+                      color: "var(--text)",
+                    }}
+                    onMouseEnter={(ev) =>
+                      (ev.currentTarget.style.backgroundColor =
+                        "var(--header-border)")
+                    }
+                    onMouseLeave={(ev) =>
+                      (ev.currentTarget.style.backgroundColor = "var(--bg)")
+                    }
                   >
-                    {e.id_equipe}
-                  </td>
-                  <td
-                    className="py-2 sm:py-3 px-3 sm:px-4 border-b"
-                    style={{ borderColor: "var(--header-border)" }}
-                  >
-                    {e.nome_equipe}
-                  </td>
-                  <td
-                    className="py-2 sm:py-3 px-3 sm:px-4 border-b"
-                    style={{ borderColor: "var(--header-border)" }}
-                  >
-                    {e.descricao_equipe}
-                  </td>
-                  <td
-                    className="py-2 sm:py-3 px-3 sm:px-4 border-b text-center"
-                    style={{ borderColor: "var(--header-border)" }}
-                  >
-                    <button
-                      onClick={() => handleEntra(e.id_equipe)}
-                      className="py-1 sm:py-2 px-3 sm:px-4 rounded-lg shadow-md transition hover:text-[#d6d6d6]"
-                    >
-                      Entrar na Equipe
-                    </button>
-                  </td>
-                </tr>
-              ))}
+                    <td className="py-2 sm:py-3 px-3 sm:px-4 border-b">
+                      {e.id_equipe}
+                    </td>
+                    <td className="py-2 sm:py-3 px-3 sm:px-4 border-b">
+                      {e.nome_equipe}
+                    </td>
+                    <td className="py-2 sm:py-3 px-3 sm:px-4 border-b">
+                      {e.descricao_equipe}
+                    </td>
+                    <td className="py-2 sm:py-3 px-3 sm:px-4 border-b text-center">
+                      <button
+                        onClick={() => handleEntra(e.id_equipe)}
+                        disabled={desabilitar}
+                        className="py-1 sm:py-2 px-3 sm:px-4 rounded-lg shadow-md transition hover:text-[#d6d6d6]
+                        disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        Entrar na Equipe
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
 
             <tfoot>
