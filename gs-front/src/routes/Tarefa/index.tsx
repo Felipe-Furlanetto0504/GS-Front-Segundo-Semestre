@@ -12,7 +12,6 @@ export default function Tarefa() {
 
   const {
     register,
-    formState: { errors },
     reset,
   } = useForm<Tarefa>();
 
