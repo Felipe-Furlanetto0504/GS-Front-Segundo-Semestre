@@ -1,7 +1,16 @@
 export default function Rodape() {
   return (
     <footer
-      className="w-full min-h-min text-center py-4 shadow-inner border-t"
+      className="
+        w-full 
+        min-h-min 
+        text-center 
+        py-4 
+        shadow-inner 
+        border-t
+        text-sm sm:text-base        
+        px-2 sm:px-6               
+      "
       style={{
         backgroundColor: "var(--header-bg)",
         color: "var(--header-text)",

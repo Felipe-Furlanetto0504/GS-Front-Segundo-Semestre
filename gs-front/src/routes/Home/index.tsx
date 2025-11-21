@@ -8,22 +8,44 @@ export default function Home() {
 
   return (
     <main
-      className="w-full flex flex-col items-center px-6 py-10 min-h-screen"
+      className="
+        w-full 
+        flex 
+        flex-col 
+        items-center 
+        px-6 
+        py-10 
+        min-h-screen
+        sm:px-10               
+        lg:px-20           
+      "
       style={{
         backgroundColor: "var(--bg)",
         color: "var(--text)",
       }}
     >
       <h1
-        className="text-3xl font-bold mb-10 tracking-wide"
+        className="
+          text-3xl 
+          font-bold 
+          mb-10 
+          tracking-wide
+          text-center sm:text-left   
+        "
         style={{ color: "var(--text-soft)" }}
       >
         Home
       </h1>
 
-      <section className=" card-dynamic border w-full max-w-3xl">
+      <section className="card-dynamic border w-full max-w-3xl">
         <div
-          className="shadow-md rounded-lg p-6 space-y-6"
+          className="
+            shadow-md 
+            rounded-lg 
+            p-6 
+            space-y-6
+            sm:p-8                   
+          "
           style={{
             backgroundColor: "var(--bg-card)",
             border: `1px solid var(--border)`,
@@ -33,12 +55,23 @@ export default function Home() {
           <img
             src={imagem}
             alt="escritorio"
-            className="w-full h-64 object-cover rounded-md"
+            className="
+              w-full 
+              h-64 
+              object-cover 
+              rounded-md
+              sm:h-80                
+              md:h-96              
+            "
             style={{ border: `1px solid var(--border)` }}
           />
 
           <h2
-            className="text-2xl font-semibold"
+            className="
+              text-2xl 
+              font-semibold
+              text-center sm:text-left   
+            "
             style={{ color: "var(--text-soft)" }}
           >
             Bem-Vindo
@@ -67,4 +100,3 @@ export default function Home() {
     </main>
   );
 }
-

@@ -96,12 +96,14 @@ export default function Tarefa() {
 
   return (
     <main style={{ padding: "20px" }} className="flex-1">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold tracking-wide">Lista de Tarefas</h1>
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 gap-4">
+        <h1 className="text-2xl sm:text-3xl font-bold tracking-wide">
+          Lista de Tarefas
+        </h1>
 
         <button
           onClick={() => setOpen(true)}
-          className="px-4 py-2 rounded shadow transition"
+          className="px-4 py-2 rounded shadow transition w-full sm:w-auto"
           style={{
             backgroundColor: "var(--header-bg)",
             color: "var(--header-text)",
@@ -112,10 +114,10 @@ export default function Tarefa() {
         </button>
       </div>
 
-      <section>
+      <section className="overflow-x-auto">
         <table
+          className="min-w-full"
           style={{
-            width: "100%",
             borderCollapse: "collapse",
             background: "var(--bg)",
             border: "1px solid var(--header-border)",
@@ -129,46 +131,11 @@ export default function Tarefa() {
                 color: "var(--header-text)",
               }}
             >
-              <th
-                style={{
-                  padding: "12px",
-                  border: "1px solid var(--header-border)",
-                }}
-              >
-                ID
-              </th>
-              <th
-                style={{
-                  padding: "12px",
-                  border: "1px solid var(--header-border)",
-                }}
-              >
-                Descrição
-              </th>
-              <th
-                style={{
-                  padding: "12px",
-                  border: "1px solid var(--header-border)",
-                }}
-              >
-                Pontos
-              </th>
-              <th
-                style={{
-                  padding: "12px",
-                  border: "1px solid var(--header-border)",
-                }}
-              >
-                Data Fim
-              </th>
-              <th
-                style={{
-                  padding: "12px",
-                  border: "1px solid var(--header-border)",
-                }}
-              >
-                Ações
-              </th>
+              <th style={{ padding: "12px", border: "1px solid var(--header-border)" }}>ID</th>
+              <th style={{ padding: "12px", border: "1px solid var(--header-border)" }}>Descrição</th>
+              <th style={{ padding: "12px", border: "1px solid var(--header-border)" }}>Pontos</th>
+              <th style={{ padding: "12px", border: "1px solid var(--header-border)" }}>Data Fim</th>
+              <th style={{ padding: "12px", border: "1px solid var(--header-border)" }}>Ações</th>
             </tr>
           </thead>
 
@@ -176,36 +143,16 @@ export default function Tarefa() {
             {tarefa.length > 0 ? (
               tarefa.map((item) => (
                 <tr key={item.id_tarefa}>
-                  <td
-                    style={{
-                      padding: "10px",
-                      border: "1px solid var(--header-border)",
-                    }}
-                  >
+                  <td style={{ padding: "10px", border: "1px solid var(--header-border)" }}>
                     {item.id_tarefa}
                   </td>
-                  <td
-                    style={{
-                      padding: "10px",
-                      border: "1px solid var(--header-border)",
-                    }}
-                  >
+                  <td style={{ padding: "10px", border: "1px solid var(--header-border)" }}>
                     {item.descricao_tarefa}
                   </td>
-                  <td
-                    style={{
-                      padding: "10px",
-                      border: "1px solid var(--header-border)",
-                    }}
-                  >
+                  <td style={{ padding: "10px", border: "1px solid var(--header-border)" }}>
                     {item.pontos_tarefa}
                   </td>
-                  <td
-                    style={{
-                      padding: "10px",
-                      border: "1px solid var(--header-border)",
-                    }}
-                  >
+                  <td style={{ padding: "10px", border: "1px solid var(--header-border)" }}>
                     {item.data_fim_tarefa}
                   </td>
                   <td
@@ -217,6 +164,7 @@ export default function Tarefa() {
                   >
                     <button
                       onClick={() => handleDelete(item.id_tarefa)}
+                      className="w-full sm:w-auto"
                       style={{
                         padding: "6px 12px",
                         background: "#c62828",
@@ -250,20 +198,20 @@ export default function Tarefa() {
       </section>
 
       {open && (
-        <div className="fixed inset-0 bg-black/50 flex justify-center items-center">
+        <div className="fixed inset-0 bg-black/50 flex justify-center items-center px-4">
           <div
-            className="p-6 rounded shadow-lg w-96"
+            className="p-6 rounded shadow-lg w-full max-w-sm sm:max-w-md"
             style={{
               backgroundColor: "var(--bg)",
               color: "var(--text)",
               border: "1px solid var(--header-border)",
             }}
           >
-            <h2 className="mb-4 border-b pb-2">Nova Tarefa</h2>
+            <h2 className="mb-4 border-b pb-2 text-lg sm:text-xl">Nova Tarefa</h2>
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               <div className="card-dynamic border flex flex-col">
-                <label className=" font-medium">Descrição da Tarefa</label>
+                <label className="font-medium">Descrição da Tarefa</label>
                 <input
                   type="text"
                   placeholder="Descrição"
@@ -273,14 +221,13 @@ export default function Tarefa() {
                   name="descricao_tarefa"
                   value={form.descricao_tarefa}
                   onChange={handleChange}
-                  className="card-dynamic border p-2 rounded"
+                  className="card-dynamic border p-2 rounded w-full"
                   style={{
                     backgroundColor: "var(--bg)",
                     color: "var(--text)",
                     borderColor: "var(--header-border)",
                   }}
                 />
-             
               </div>
 
               <div className="card-dynamic border flex flex-col">
@@ -294,14 +241,13 @@ export default function Tarefa() {
                   name="pontos_tarefa"
                   value={form.pontos_tarefa}
                   onChange={handleChange}
-                  className="border p-2 rounded"
+                  className="border p-2 rounded w-full"
                   style={{
                     backgroundColor: "var(--bg)",
                     color: "var(--text)",
                     borderColor: "var(--header-border)",
                   }}
                 />
-              
               </div>
 
               <div className="card-dynamic border flex flex-col">
@@ -314,14 +260,13 @@ export default function Tarefa() {
                   name="data_fim_tarefa"
                   value={form.data_fim_tarefa}
                   onChange={handleChange}
-                  className="border p-2 rounded"
+                  className="border p-2 rounded w-full"
                   style={{
                     backgroundColor: "var(--bg)",
                     color: "var(--text)",
                     borderColor: "var(--header-border)",
                   }}
                 />
-              
               </div>
 
               <button

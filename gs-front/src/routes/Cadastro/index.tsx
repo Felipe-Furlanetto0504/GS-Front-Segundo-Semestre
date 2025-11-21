@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import type { Funcionario } from "../../types/funcionario";
 
-
 export default function Cadastro() {
   const navigate = useNavigate();
 
@@ -11,7 +10,7 @@ export default function Cadastro() {
     document.title = "Cadastro";
   }, []);
 
-  const [sucesso, setSucesso] = useState(""); 
+  const [sucesso, setSucesso] = useState("");
 
   const {
     register,
@@ -33,7 +32,7 @@ export default function Cadastro() {
         return;
       }
 
-      setSucesso("Cadastro efetuado com êxito."); 
+      setSucesso("Cadastro efetuado com êxito.");
 
       navigate("/");
       reset();
@@ -44,11 +43,10 @@ export default function Cadastro() {
   };
 
   return (
-    <section className="min-h-screen w-full flex justify-center items-center p-6">
-      <div className="card-dynamic border card-light-dark rounded-lg shadow-md p-8 w-full max-w-lg">
-        <h1 className="text-2xl font-bold mb-6">Cadastro de Funcionário</h1>
+    <section className="min-h-screen w-full flex justify-center items-center p-4 sm:p-6">
+      <div className="card-dynamic border card-light-dark rounded-lg shadow-md p-6 sm:p-8 w-full max-w-md sm:max-w-lg">
+        <h1 className="text-xl sm:text-2xl font-bold mb-6">Cadastro de Funcionário</h1>
 
-        
         {sucesso && (
           <div className="w-full mb-4 p-3 rounded bg-green-600 text-white text-sm font-semibold shadow">
             {sucesso}
@@ -65,7 +63,7 @@ export default function Cadastro() {
               type="text"
               placeholder="Seu Nome"
               {...register("nome_funcionario", { required: "O Nome é obrigatório" })}
-              className="card-dynamic border p-2 rounded w-full"
+              className="card-dynamic border p-2 rounded w-full text-sm sm:text-base"
             />
             {errors.nome_funcionario && (
               <span className="text-red-600 text-xs mt-1">
@@ -80,7 +78,7 @@ export default function Cadastro() {
               type="text"
               placeholder="Cargo"
               {...register("cargo_funcionario", { required: "O Cargo é obrigatório" })}
-              className="card-dynamic border p-2 rounded w-full"
+              className="card-dynamic border p-2 rounded w-full text-sm sm:text-base"
             />
             {errors.cargo_funcionario && (
               <span className="text-red-600 text-xs mt-1">
@@ -95,7 +93,7 @@ export default function Cadastro() {
               type="email"
               placeholder="SeuEmail@gmail.com"
               {...register("email_funcionario", { required: "O E-mail é obrigatório" })}
-              className="card-dynamic border p-2 rounded w-full"
+              className="card-dynamic border p-2 rounded w-full text-sm sm:text-base"
             />
             {errors.email_funcionario && (
               <span className="text-red-600 text-xs mt-1">
@@ -106,7 +104,7 @@ export default function Cadastro() {
 
           <button
             type="submit"
-            className="bg-[#696969] text-white py-2 px-4 rounded font-semibold hover:bg-[#505050] transition"
+            className="bg-[#696969] text-white py-2 px-4 rounded font-semibold hover:bg-[#505050] transition text-sm sm:text-base"
           >
             Cadastrar
           </button>
