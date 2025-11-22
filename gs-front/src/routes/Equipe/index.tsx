@@ -10,7 +10,9 @@ export default function Equipe() {
 
   const fetchEquipe = async () => {
     try {
-      const response = await fetch("http://localhost:8080/equipe");
+      const response = await fetch(
+        "https://team-up-jvm-latest.onrender.com/equipe"
+      );
       if (!response.ok) throw new Error("Erro ao achar equipe");
       const data: Equipe[] = await response.json();
       setEquipe(data);
@@ -27,7 +29,9 @@ export default function Equipe() {
     const equipeAtual = localStorage.getItem("equipeAtual");
 
     if (equipeAtual) {
-      alert("Você já participa de uma equipe. Não é permitido ingressar em outra.");
+      alert(
+        "Você já participa de uma equipe. Não é permitido ingressar em outra."
+      );
       return;
     }
 
@@ -35,12 +39,15 @@ export default function Equipe() {
     if (!confirmEntrar) return;
 
     try {
-      const response = await fetch(`http://localhost:8080/equipe/entrar/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        `https://team-up-jvm-latest.onrender.com/equipe/entrar/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       if (!response.ok) throw new Error("Erro ao entrar na equipe");
 
@@ -54,7 +61,6 @@ export default function Equipe() {
     }
   };
 
-  
   const handleSair = async () => {
     const equipeAtual = localStorage.getItem("equipeAtual");
 
@@ -68,7 +74,7 @@ export default function Equipe() {
 
     try {
       const response = await fetch(
-        `http://localhost:8080/equipe/sair/${equipeAtual}`,
+        `https://team-up-jvm-latest.onrender.com/equipe/sair/${equipeAtual}`,
         {
           method: "POST",
           headers: {

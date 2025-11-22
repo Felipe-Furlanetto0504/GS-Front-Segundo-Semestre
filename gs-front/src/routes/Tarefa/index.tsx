@@ -23,7 +23,7 @@ export default function Tarefa() {
 
   const fetchTarefa = async () => {
     try {
-      const response = await fetch("http://localhost:8080/tarefa");
+      const response = await fetch("https://team-up-jvm-latest.onrender.com/tarefa");
       if (!response.ok) throw new Error("Erro ao buscar a tarefa");
       const data: Tarefa[] = await response.json();
       setTarefa(data);
@@ -41,7 +41,7 @@ export default function Tarefa() {
     if (!confirmDelete) return;
 
     try {
-      const response = await fetch(`http://localhost:8080/tarefa/${id}`, {
+      const response = await fetch(`https://team-up-jvm-latest.onrender.com/tarefa/${id}`, {
         method: "DELETE",
       });
 
@@ -72,7 +72,7 @@ export default function Tarefa() {
     }
 
     try {
-      const response = await fetch("http://localhost:8080/tarefa", {
+      const response = await fetch("https://team-up-jvm-latest.onrender.com/tarefa", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

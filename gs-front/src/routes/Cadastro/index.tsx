@@ -21,7 +21,7 @@ export default function Cadastro() {
 
   const onSubmit = async (data: Funcionario) => {
     try {
-      const response = await fetch("http://localhost:8080/funcionario", {
+      const response = await fetch("https://team-up-jvm-latest.onrender.com/funcionario", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -33,9 +33,13 @@ export default function Cadastro() {
       }
 
       setSucesso("Cadastro efetuado com êxito.");
-
-      navigate("/");
       reset();
+
+    
+      setTimeout(() => {
+        setSucesso("");
+        navigate("/");
+      }, 3000);
 
     } catch {
       alert("Falha no processamento. Acione o suporte.");
