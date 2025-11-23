@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+:root {scroll-behavior: smooth;}
+
+
+
+
+:root {
+  --header-bg: #747474;
+  --header-text: #ffffff;
+  --header-border: #474747;
+   
+
+
+
+  --bg: #e6e6e6;
+  --text: #000000;
+}
+
+
+body[data-theme="dark"] {
+  --header-bg: #2c2c2c;
+  --header-text: #f0f0f0;
+  --header-border: #1a1a1a;
+
+  --bg: #1a1a1a;
+  --text: #e8e8e8;
+}
+
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
