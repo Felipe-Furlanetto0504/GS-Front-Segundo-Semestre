@@ -31,7 +31,7 @@ Sumario:
 
 2.Link Do YouTube: https://youtu.be/TMe_ebP0PgI
 
-3.Link Da Vercel: https://gs-front-felipefurlanetto4-9715-felipe-furlanettos-projects.vercel.app?_vercel_share=pVxWo9FOzUxWVwYaSARRWecPF0tB5yEx
+3.Link Da Vercel: https://gs-front-two.vercel.app
 
 4.Sobre O Projeto: Esse Projeto serve para que as pessoas que trabalham em alguma empresa se sintam mais inpiradas ao realizar seu trabalho, por meio de recompensas, usando os pontos acumulados apos terminar as tarefas.
 
