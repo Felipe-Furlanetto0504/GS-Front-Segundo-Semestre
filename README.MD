@@ -31,7 +31,7 @@ Sumario:
 
 2.Link Do YouTube: https://youtu.be/TMe_ebP0PgI
 
-3.Link Da Vercel:
+3.Link Da Vercel: https://gs-front-felipefurlanetto4-9715-felipe-furlanettos-projects.vercel.app?_vercel_share=pVxWo9FOzUxWVwYaSARRWecPF0tB5yEx
 
 4.Sobre O Projeto: Esse Projeto serve para que as pessoas que trabalham em alguma empresa se sintam mais inpiradas ao realizar seu trabalho, por meio de recompensas, usando os pontos acumulados apos terminar as tarefas.
 
@@ -53,7 +53,3 @@ João Victor Caetano Alves da Silva RM 562074 1TDSPF. Meus Creditos vão a todos
 ![Cadastro](./gs-front/src/img/image-2.png), ![Equipe](./gs-front/src/img/image-3.png)
 
 12.Contato: felipe.furlanetto.4@gmail.com, Jvictorcastelini2006@gmail.com, e joaovictorcaetano1310@gmail.com
-
-
-
-
